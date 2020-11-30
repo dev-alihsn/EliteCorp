@@ -2,4 +2,10 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+
+.uupper-bar {
+  background-color: #08526D;
+  color: #fff;
+  padding: 10px;
+}
 /*# sourceMappingURL=main.css.map */

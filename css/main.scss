@@ -1,4 +1,14 @@
+// vars
+$primery-color: #08526D;
+$secondery-color: #EC1C23;
 // tools
 *{
     box-sizing: border-box;
 } 
+
+// Start upper bar
+.uupper-bar {
+    background-color: $primery-color;
+    color: #fff;
+    padding: 10px;
+}
