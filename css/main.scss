@@ -6,11 +6,56 @@ $secondery-color: #EC1C23;
     box-sizing: border-box;
 } 
 
+
+%heading {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+%prag {
+    font-size: 20px;
+    line-height: 1.6;
+    width: 80%;
+    margin: 0 auto 15px;
+    color: #6a6a6a;
+}
+
+%btn {
+    background-color: $secondery-color;
+    color: #fff;
+    border: 1px solid $secondery-color;
+    padding: 10px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+%overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 2;
+}
+
+%logo {
+    font-size: 40px;
+
+    &:first-child {color: $primery-color;font-weight: bold;}
+    &:last-child {color: $secondery-color;}
+}
+
 // Start upper bar
 .upper-bar {
     background-color: $primery-color;
     color: #fff;
-    padding: 15px;
+
+    .info {
+        margin: 15px 0;
+    }
 
     span {
         color: #bfc6c9;
@@ -26,6 +71,17 @@ $secondery-color: #EC1C23;
     i {font-size: 14px;}
 
 }
+
+// Responsive Part
+@media (max-width: 576px) {
+    .upper-bar {
+        .info:first-of-type {
+            margin: 15px 0 0;
+        }
+
+        .getQ {border: none}
+    }
+}
 // End upper bar
 
 // Start navbar
@@ -34,10 +90,7 @@ $secondery-color: #EC1C23;
     .navbar-brand {
         
         span {
-            font-size: 40px;
-
-            &:first-child {color: $primery-color;font-weight: bold;}
-            &:last-child {color: $secondery-color;}
+            @extend %logo;
         }
     }
 
@@ -63,20 +116,518 @@ $secondery-color: #EC1C23;
 .slider {
     background-color: #DDD;
 
-    .carousel-item {
-        background-size: cover;
+    .carousel-indicators li {
+        height: 8px;
+        cursor: pointer;
     }
 
-    .carousel-one {
-        background-image: url(../images/slider01.jpg);
-    }
+    .carousel-inner {
+        
+        h1 {
+            position: absolute;
+            color: #fff;
+            z-index: 3;
+            font-size: 70px;
+            max-width: 900px;
+            line-height: 1.5;
+            left: 100px;
 
-    .carousel-tow {
-        background-image: url(../images/slider02.jpg);
-    }
+            span {
+                background-color: $secondery-color;
+                color: #fff;
+                display: inline-block;
+                padding: 2px 10px;
+            }
+        }
 
-    .carousel-three {
-        background-image: url(../images/slider03.jpg);
+        .overlay {
+            @extend %overlay;
+        }
+
+        .carousel-item {
+            background-size: cover;
+        }
+    
+        .carousel-one {
+            background-image: url(../images/slider01.jpg);
+        }
+    
+        .carousel-tow {
+            background-image: url(../images/slider02.jpg);
+        }
+    
+        .carousel-three {
+            background-image: url(../images/slider03.jpg);
+        }
+    }
+}
+
+// Responsive Part
+@media (max-width: 768px) {
+    .slider {
+        .carousel-inner h1 {
+            left: auto;
+            justify-content: center;
+            max-width: 100%;
+            font-size: 35px;
+            left: 10px;
+            top: 10px;
+        }
     }
 }
 // End silder
+
+// Start features
+.features {
+    padding: 50px 0;
+
+    i {
+        background-color: $secondery-color;
+        color: #fff;
+        margin-bottom: 10px;
+        width: 58px;
+        height: 58px;
+        line-height: 60px;
+    }
+
+    h3 {
+        color: $primery-color;
+        font-size: 22px;
+    }
+
+    p {
+        color: #989898;
+        margin-bottom: 40px;
+    }
+}
+// End features
+
+// Start overview
+.overview {
+    padding: 100px 0;
+    background-color: #F0F5F7;
+
+    h2 {
+        @extend %heading;
+    }
+
+    p {
+        @extend %prag;
+        line-height: 2;
+    }
+
+    h4 {
+        letter-spacing: 2px;
+        font-weight: normal;
+        color: #8b8a8a;
+        margin-bottom: 40px;
+    }
+
+    button {
+        @extend %btn;
+        cursor: default;
+    }
+}
+
+// End overview
+
+// Start featured work
+.featured-work {
+    padding: 100px 0;
+
+    h2 {
+        @extend %heading;
+    }
+
+    P {
+        @extend %prag;
+    }
+
+    ul {
+        margin-top: 40px;
+        margin-bottom: 50px;
+
+        li {
+            color: $primery-color;
+            border: 2px solid $primery-color;
+            padding: 10px 20px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+    
+            &.active,
+            &:hover {
+                background-color: $secondery-color;
+                color: #fff;
+                border-color: $secondery-color;
+            }
+        }
+    } 
+
+    .shuffle-images {
+        .row {margin: 0;}
+        .col-md {
+            padding: 0;
+            transition: all .5s ease-in-out;
+    
+            & img {
+                width: 100%;
+            }
+        }
+    }
+}
+// End featured work
+
+// Start latest posts
+.latest-posts {
+    padding: 0 0 100px;
+    
+    h2 {
+        @extend %heading;
+    }
+
+    .section-decrption {
+        @extend %prag;
+        margin-bottom: 45px;
+    }
+
+    .card {
+        color: #787878;
+        margin-bottom: 30px;
+
+        &-title {
+            font-size: 20px;
+            line-height: 1.5;
+            color: $primery-color;
+        }
+
+        &-link {
+            color: $secondery-color;
+            font-weight: bold;
+        }
+    }
+}
+// End latest posts
+
+// Start testimonials
+.testimonials {
+    background-image: url(../images/testimonial.jpg);
+    background-size: cover;
+    position: relative;
+    
+    .overlay {
+        @extend %overlay;
+    }
+
+    .container {
+        z-index: 3;
+        position: relative;
+    }
+
+    .carousel-caption {
+        top: 20%;
+
+        img {
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+        }
+
+        span {
+            font-size: 18px;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        p {font-size: 17px;}
+    }
+
+    
+    .carousel-indicators li {
+        height: 8px;
+        cursor: pointer;
+    }
+}
+// End testimonials
+
+// Start pricing table
+.pricing-table {
+    padding: 100px 0;
+    background-color: #F7F7F7;
+    
+    h2 {
+        @extend %heading;
+    }
+
+    .section-decrption {
+        @extend %prag;
+        margin-bottom: 45px;
+    }
+
+    .card {
+        color: #787878;
+        margin-bottom: 30px;
+
+        &-title {
+            font-size: 25px;
+            line-height: 1.5;
+            color: $primery-color;
+            margin-top: 40px;
+        }
+
+
+
+        &-text {
+            margin: 20px 0;
+            font-size: 30px;
+            color: $primery-color;
+            padding: 10px;
+            font-weight: bold;
+
+            span {
+                font-size: 15px;
+                font-weight: bold;
+            }
+        }
+
+        &-link {
+            color: #fff;
+            font-weight: bold;
+            @extend %btn;
+        }
+
+        & ul {
+            margin-bottom: 20px;
+        }
+    }
+
+    .container div:nth-child(2) {
+        .card {
+            position: relative;
+            top: -20px;
+            .card-text {
+                background-color: $secondery-color;
+                color: #fff;
+            }
+
+            .card-link {
+                background-color: $primery-color;
+                color: #fff;
+                border: 1px solid $primery-color;
+            }
+        }
+    }
+
+}
+// End pricing table
+
+// Start why chose us
+.chose-us {
+
+    .col-xl-6:nth-child(1) {
+        padding: 0;
+
+        img {
+            max-width: 100%;
+        }
+    }
+
+    .col-xl-6:nth-child(2) {
+        background-color: $primery-color;
+        color: #fff;
+        padding: 30px 0px;
+
+        h2 {
+            font-size: 40px;
+            color: #fff;
+            margin: 40px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 2;
+            margin: 40px;
+        }
+
+        .read-more {
+            @extend %btn;
+            text-transform: uppercase;
+            margin: 10px 0 10px 40px;
+            font-size: 20px;
+        }
+    }
+
+}
+// End why chose us
+
+// Start statstics
+.stats {
+    padding: 100px 0;
+    color: $primery-color;
+
+    .row > div {
+        margin-bottom: 40px;
+    }
+
+    span {
+        display: block;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    p {
+        font-size: 20px;
+        margin: 0;
+        color: $secondery-color;
+    }
+
+}
+// End statstics
+
+// Sart contact us
+.contact-us {
+    padding: 80px 0;
+    background-color: $secondery-color;
+    color: #fff;
+    font-size: 22px;
+
+    p {
+        margin: 0;
+    }
+
+    a {
+        @extend %btn;
+        border: 2px solid #fff;
+        padding: 6px 15px 8px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+// End contact us
+
+// Start footer
+footer {
+    padding: 100px 0;
+
+    .site-info {
+
+        span {
+            @extend %logo;
+            display: inline-block;
+            font-size: 50px;
+            margin-bottom: 35px;
+            
+            &:last-of-type {
+                color: $secondery-color;
+            }
+        }
+
+        p {
+            line-height: 1.8;
+            color: #727272;
+        }
+
+        a {
+            color: $primery-color;
+            font-weight: bold;
+            font-size: 17px;
+            padding-top: 10px;
+
+            &::before {
+                content: "\f138";
+                display: inline-block;
+                font-family: "Font Awesome 5 Free";
+                margin-right: 5px;
+            }
+        }
+        
+    }
+
+    .helpfulinks {
+
+        .row {
+            margin-top: 60px;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: $primery-color;
+            padding: 10px;
+        }
+
+        ul {
+            li::before {
+                content: "";
+                display: inline-block;
+                margin-right: 7px;
+                background: $primery-color;
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                line-height: 7px;
+            }
+        }
+
+        .list-unstyled {
+            line-height: 1.7;
+        }
+    }
+
+    .cont-act {
+        h2 {
+            font-size: 22px;
+            color: $primery-color;
+            padding: 10px;
+        }
+
+        ul {
+            margin-top: 60px;
+
+            li {
+                &:not(last-child) {
+                    margin-bottom: 30px;
+                }
+            }
+        }
+    }
+}
+// End footer
+
+// Start copyright
+.copyright {
+    padding: 20px;
+    border-top: 1px solid #c0c0c0;
+
+    .sucial {
+        font-size: 20px;
+        cursor: pointer;
+        color: #787878;
+        
+        i {
+            padding: 5px;
+
+            &:hover {
+                color: #504747;
+            }
+        }
+    }
+}
+// End copyright
+
+// Responsive
+@media (max-width: 576px) {
+    %heading {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    %prag {
+        width: 100%;
+        padding: 5px;
+        line-height: 1.8;
+        font-size: 18px;
+    }
+}
